@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Christmas Countdown</title>
+    <title>Class Christmas Celebration</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css"> <!-- File responsive riêng -->
     <link rel="icon" href="chad-removebg-preview.png" type="image/x-icon">
 </head>
 <body>
@@ -44,29 +45,27 @@
             </div>
         </section>
         <section id="media-section">
-            <h2>Shitpost and Videos</h2>
-            <div class="media-gallery">
-                <!-- Images -->
-                <div class="image-container">
-                    <img src="gay.jfif" alt="Placeholder image 1">
-                    <img src="urmom.jfif" alt="Placeholder image 2">
-                </div>
-                <!-- Video -->
-                <div class="video-container">
-                    <video controls>
-                        <source src="sample-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+            <h2>Shitposts and video</h2>
+            <div class="media-grid">
+                <img src="urmom.jfif" alt="Christmas Memory 1">
+                <img src="gay.jfif" alt="Christmas Memory 2">
+                <iframe src="https://www.youtube.com/embed/LdhsKkKhDnU?si=X-fv_zI7IKEa-0s4" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                </iframe>
             </div>
-        </section>
+        
+        
     </main>
     <footer>
         Made with ❤️ by Class AE4A | Merry Christmas!
     </footer>
     <script>
         function updateCountdown() {
-            const christmasDate = new Date('December 24, 2024 00:00:00').getTime();
+            const christmasDate = new Date('December 26, 2024 00:00:00').getTime();
             const now = new Date().getTime();
             const diff = christmasDate - now;
 
@@ -81,22 +80,45 @@
             document.getElementById('seconds').textContent = seconds;
         }
 
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            snowflake.style.animationDuration = Math.random() * 5 + 3 + 's';
-            document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 8000);
-        }
-
         setInterval(updateCountdown, 1000);
-        setInterval(createSnowflake, 200);
     </script>
+    <script>
+        // Snowflake creation and animation
+        function createSnowflake() {
+          let snowflake = document.createElement('div');
+          snowflake.classList.add('snowflake');
+          snowflake.innerHTML = '❄'; // You can use other symbols or images
+    
+          // Randomize starting position and falling speed
+          let startPositionX = Math.random() * window.innerWidth;
+          let fallSpeed = Math.random() * 3 + 2; // Speed of snowflake falling
+          let size = Math.random() * 10 + 10; // Size of snowflake
+    
+          snowflake.style.left = startPositionX + 'px';
+          snowflake.style.fontSize = size + 'px';
+    
+          document.body.appendChild(snowflake);
+    
+          // Animation of falling snowflake
+          let snowflakeFall = setInterval(() => {
+            let topPosition = parseFloat(snowflake.style.top) || 0;
+            if (topPosition > window.innerHeight) {
+              // Reset snowflake once it goes off-screen
+              snowflake.style.top = '-10px';
+              snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            } else {
+              snowflake.style.top = topPosition + fallSpeed + 'px';
+            }
+          }, 20);
+        }
+    
+        // Generate snowflakes every 50 milliseconds
+        setInterval(createSnowflake, 300);
+      </script>
+
+
+
+
+
 </body>
 </html>

@@ -1,0 +1,49 @@
+/* Responsive hình ảnh và video */
+@media (max-width: 768px) {
+    /* Sửa lỗi ảnh bị tràn */
+    .media-grid img {
+        display: block; /* Chuyển ảnh thành block để căn giữa */
+        margin: auto; 
+    }
+
+    /* Điều chỉnh kích thước video */
+    .media-grid video {
+       
+        height: 1000;
+        width: 1000;
+    }
+}
+
+/* Tablet devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Đảm bảo hình ảnh không bị tràn */
+    .media-grid img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Video trên tablet */
+    .media-grid video {
+        width: 100%; /* Tăng kích thước video */
+        height: auto;
+    }
+}
+
+/* Countdown Section Fix */
+#countdown {
+    display: flex; /* Giúp chia đều các phần tử */
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    justify-content: space-evenly; /* Căn đều khoảng cách */
+    gap: 10px; /* Thêm khoảng cách giữa các box */
+}
+
+#countdown .time {
+    flex: 1 1 120px; /* Chiều rộng tối thiểu 120px, tự co dãn */
+    max-width: 180px; /* Đảm bảo không quá to */
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+    background-color: #502a1d;
+}
+
